@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Rubik+Vinyl&family=Spicy+Rice&family=Bad+Script&family=Cinzel+Decorative&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h2, h3 {
+    @apply bg-clip-text ;
+}
+
+/* Custom Scrollbar Hide Styles */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+@keyframes bounce-right {
+    0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(15px); 
+      }
+  }    
+  .animate-bounce-right {
+      animation: bounce-right 1s infinite; 
+  }
+  
+  @keyframes bounce-left {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-15px); 
+      }
+  }  
+  .animate-bounce-left {
+      animation: bounce-left 1s infinite; 
+  }
