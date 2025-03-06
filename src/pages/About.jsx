@@ -44,20 +44,28 @@ const AboutUs = () => {
   return (
     <div className="bg-white text-gray-800 min-h-screen flex flex-col items-center justify-center p-6">
       <div className="flex flex-col md:flex-row justify-around items-center w-full ">
-        <div className="flex flex-row">
-        <h1 className="text-4xl font-bold text-purple-600 mb-6 md:mb-0 md:text-left">
-          Where Businesses Shine<br/> and<br/> Customers Glow
-        </h1>
-        <h1 className="text-4xl font-bold mb-6 md:mb-0 md:text-right">
-          Welcome to the Future<br/> of Beauty & Wellness!
-        </h1>
-        </div>
+      <div className="flex flex-col w-full max-w-2xl mx-auto">
+  <h1 className="text-4xl font-bold text-purple-600 mb-6 md:mb-0 md:text-left">
+    Where Businesses Shine<br /> and<br /> Customers Glow 
+  </h1>
+
+  <h1 className="text-4xl font-bold mb-6 md:mb-0 md:text-right">
+    Welcome to the Future<br /> of Beauty & Wellness!
+  </h1>
+</div>
+
       </div>
       <img src="/about_img.jpg" alt="About Us" className="w-full max-w-3xl rounded-lg shadow-lg" />
-      <p className="text-center text-xl max-w-2xl mb-6 mt-6">
-        Connecting local businesses and professionals with their clients, making
-        beauty & wellness experience effortless.
-      </p>
+      <p className="text-center text-xl max-w-3xl mb-6 mt-6 px-8 py-4 
+             bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500
+             text-white rounded-lg shadow-lg h-[200px] w-full flex items-center justify-center">
+  Connecting local businesses and professionals with their clients, making
+  beauty & wellness experience effortless.
+</p>
+
+
+
+
       
       {/* Section for Customers */}
       <h3 className="text-2xl font-semibold text-center mb-4">Glow Inside, Shine Outside</h3>
