@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../public/NUZA-logo.png"
 const Navbar = () => {
     return (
-        <nav className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 shadow-lg">
+        <nav className="bg-[#7B6DFF] text-white p-4 shadow-lg">
     <div className="container mx-auto flex justify-between items-center">
         <img src={logo} alt="Logo" className="h-8" /> {/* Replace with your image path */}
         <div className="space-x-4">
@@ -13,6 +13,7 @@ const Navbar = () => {
         </div>
     </div>
 </nav>
+
 
     );
 };
