@@ -29,9 +29,10 @@ const App = () => {
                     path="/dashboard" 
                     element={
                         <>
-                            <TopNavBar />
-                            <Categories />
-                            <Dashboard />
+                            
+                                <TopNavBar />
+                                <Categories />
+                                <Dashboard />
                         </>
                     } 
                 />

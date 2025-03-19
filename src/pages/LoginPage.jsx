@@ -36,6 +36,7 @@ const LoginPage = () => {
         try {
             // Google authentication logic (mocked here)
             alert("Google login initiated!");
+            window.location.href = "http://localhost:3000/api/auth/google";
         } catch (err) {
             setError("Google login failed");
         }
