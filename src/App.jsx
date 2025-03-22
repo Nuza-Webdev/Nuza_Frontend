@@ -10,21 +10,22 @@ import TopNavBar from "./pages/TopNavbar";
 import Categories from "./pages/Categories";
 import NearNuzaPage from "./pages/NearNuzaPage";
 import About from "./pages/About";
-
+import Messages from "./pages/Messages";
+import Chat from "./pages/Chat";  
 
 const App = () => {
     const location = useLocation();
-    // Define routes where Navbar should NOT appear
-    const noNavbarRoutes = ["/dashboard", "/payment","/near-you"];    
+    const noNavbarRoutes = ["/dashboard", "/payment", "/near-you"];
 
     return (
         <>
-            {/* Render Navbar only if the current route is NOT in noNavbarRoutes */}
             {!noNavbarRoutes.includes(location.pathname) && <Navbar />}
             <Routes>
-            <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/chat/:id" element={<Chat />} />  {/* Chat Page Route */}
                 <Route 
                     path="/dashboard" 
                     element={
@@ -37,23 +38,20 @@ const App = () => {
                 />
                 <Route path="/payment" element={
                     <>
-                    <TopNavBar />
-                    <Categories />
-                    <PaymentPage />
+                        <TopNavBar />
+                        <Categories />
+                        <PaymentPage />
                     </>                    
-                    } 
-                />
+                } />
                 <Route path="/near-you" element={
                     <>
-                    <TopNavBar />
-                    <Categories />
-                    <NearNuzaPage />
+                        <TopNavBar />
+                        <Categories />
+                        <NearNuzaPage />
                     </>
-                    } 
-                />
+                } />
             </Routes>
             <Footer />
-            
         </>
     );
 };
