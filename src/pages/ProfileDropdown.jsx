@@ -15,6 +15,7 @@ const ProfileDropdown = () => {
 
     const handleSignOut = () => {
         console.log("Sign out clicked");
+        localStorage.removeItem("token");
         navigate("/"); // Redirect to the LoginPage route
     };
     useEffect(() => {

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import { IoIosArrowDown } from "react-icons/io"; // Importing the down arrow icon
 import { FaArrowCircleDown } from "react-icons/fa";
 import { FaArrowRightLong , FaArrowLeftLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const AboutUs = () => {
+  const [email,setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const images_customer = [
     "/customers1.jpg",
     "/customers2.jpg",
@@ -23,6 +27,36 @@ const AboutUs = () => {
     // "/business6.jpg",
     // "/business7.jpg",
   ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .send(
+        'service_as5x79j',
+        'template_d2d0h3i',
+        {
+          to_email: email,
+          message: "Message from Nuza",
+        },
+        'THtOBH8U_wvAbSkHH'
+      )
+      .then(
+        () => {
+          setLoading(false);
+          alert("Thank you. I will get back to you as soon as possible.");
+
+          setEmail("");
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+
+          alert("Ahh, something went wrong. Please try again.");
+        }
+      );
+  };
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentInd, setCurrentInd] = useState(0);
@@ -143,11 +177,13 @@ const AboutUs = () => {
         <p className="text-lg mb-6">Share your email to stay updated.</p>
         <div className="flex flex-col sm:flex-row gap-4">
             <input
-            type="email"
+            type="text"
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="flex-1 px-4 py-3 text-gray-900 rounded-md border-2 border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
-            <button className="bg-purple-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-purple-700 transition-all">
+            <button className="bg-purple-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-purple-700 transition-all" onClick={handleSubmit}>
             Submit
             </button>
         </div>
