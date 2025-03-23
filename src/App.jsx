@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Dashboard from "./pages/Dashboard";
 import PaymentPage from "./pages/PaymentPage";
-import TopNavBar from "./pages/TopNavbar";
+import TopNavBar from "./pages/TopNavBar";
 import Categories from "./pages/Categories";
 import NearNuzaPage from "./pages/NearNuzaPage";
 import About from "./pages/About";
