@@ -3,8 +3,11 @@ import { IoIosArrowDown } from "react-icons/io"; // Importing the down arrow ico
 import { FaArrowCircleDown } from "react-icons/fa";
 import { FaArrowRightLong , FaArrowLeftLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const AboutUs = () => {
+  const [email,setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const images_customer = [
     "/customers1.jpg",
     "/customers2.jpg",
@@ -23,7 +26,35 @@ const AboutUs = () => {
     // "/business6.jpg",
     // "/business7.jpg",
   ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
 
+    emailjs
+      .send(
+        'service_as5x79j',
+        'template_d2d0h3i',
+        {
+          to_email: "fiitjeeb02@gmail.com",
+          message: email,
+        },
+        'THtOBH8U_wvAbSkHH'
+      )
+      .then(
+        () => {
+          setLoading(false);
+          alert("Thank you. I will get back to you as soon as possible.");
+
+          setEmail("");
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+
+          alert("Ahh, something went wrong. Please try again.");
+        }
+      );
+  };
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentInd, setCurrentInd] = useState(0);
   useEffect(() => {
@@ -44,20 +75,28 @@ const AboutUs = () => {
   return (
     <div className="bg-white text-gray-800 min-h-screen flex flex-col items-center justify-center p-6">
       <div className="flex flex-col md:flex-row justify-around items-center w-full ">
-        <div className="flex flex-row">
-        <h1 className="text-4xl font-bold text-purple-600 mb-6 md:mb-0 md:text-left">
-          Where Businesses Shine<br/> and<br/> Customers Glow
-        </h1>
-        <h1 className="text-4xl font-bold mb-6 md:mb-0 md:text-right">
-          Welcome to the Future<br/> of Beauty & Wellness!
-        </h1>
-        </div>
+      <div className="flex flex-col w-full max-w-2xl mx-auto">
+  <h1 className="text-4xl font-bold text-purple-600 mb-6 md:mb-0 md:text-left">
+    Where Businesses Shine<br /> and<br /> Customers Glow 
+  </h1>
+
+  <h1 className="text-4xl font-bold mb-6 md:mb-0 md:text-right">
+    Welcome to the Future<br /> of Beauty & Wellness!
+  </h1>
+</div>
+
       </div>
       <img src="/about_img.jpg" alt="About Us" className="w-full max-w-3xl rounded-lg shadow-lg" />
-      <p className="text-center text-xl max-w-2xl mb-6 mt-6">
-        Connecting local businesses and professionals with their clients, making
-        beauty & wellness experience effortless.
-      </p>
+      <p className="text-center text-xl max-w-3xl mb-6 mt-6 px-8 py-4 
+             bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500
+             text-white rounded-lg shadow-lg h-[200px] w-full flex items-center justify-center">
+  Connecting local businesses and professionals with their clients, making
+  beauty & wellness experience effortless.
+</p>
+
+
+
+
       
       {/* Section for Customers */}
       <h3 className="text-2xl font-semibold text-center mb-4">Glow Inside, Shine Outside</h3>
@@ -142,12 +181,14 @@ const AboutUs = () => {
         <p className="text-lg mb-4">We’re almost there! Get notified when Nuza goes live.</p>
         <p className="text-lg mb-6">Share your email to stay updated.</p>
         <div className="flex flex-col sm:flex-row gap-4">
-            <input
+        <input
             type="email"
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="flex-1 px-4 py-3 text-gray-900 rounded-md border-2 border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
-            <button className="bg-purple-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-purple-700 transition-all">
+            <button className="bg-purple-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-purple-700 transition-all" onClick={handleSubmit}>
             Submit
             </button>
         </div>
