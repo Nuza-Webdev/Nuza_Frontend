@@ -22,7 +22,8 @@ const App = () => {
             {/* Render Navbar only if the current route is NOT in noNavbarRoutes */}
             {!noNavbarRoutes.includes(location.pathname) && <Navbar />}
             <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<About />} />
+            <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/about" element={<About />} />
                 <Route 

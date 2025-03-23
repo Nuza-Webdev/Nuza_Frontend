@@ -12,7 +12,24 @@ import NearYou from "./nearYou";
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const [currentSlide, setCurrentSlide] = useState(0);   
+    const [currentSlide, setCurrentSlide] = useState(0); 
+ 
+     useEffect(() => {
+         // Extract token from URL query params
+         const params = new URLSearchParams(window.location.search);
+         const token = params.get("token");
+ 
+         if (token) {
+             console.log("Extracted Token:", token); 
+             localStorage.setItem("token", token);  
+             window.history.replaceState({}, document.title, "/dashboard");  
+         } else {
+             const storedToken = localStorage.getItem("token");
+             if (!storedToken) {
+                 navigate("/");  
+             }
+         }
+     }, [navigate]); 
 
     // Offer data (without images)
     const offers = [

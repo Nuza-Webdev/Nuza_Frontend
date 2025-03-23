@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineHome, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineHome, AiOutlinePhone , AiOutlineMessage } from "react-icons/ai";
 import { MdPayment } from "react-icons/md";
 import { IoListCircleOutline } from "react-icons/io5";
+
+
+
 
 const ListCircleDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -54,6 +57,10 @@ const ListCircleDropdown = () => {
                     <button className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
                         <AiOutlinePhone className="text-indigo-600 text-lg mr-2" />
                         <span className="text-gray-700 font-medium">Contact Us</span>
+                    </button>
+                    <button className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <AiOutlineMessage className="text-indigo-600 text-lg mr-2" />
+                        <span className="text-gray-700 font-medium">Message</span>
                     </button>
                 </div>
             )}
