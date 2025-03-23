@@ -7,7 +7,7 @@ import { FiSearch } from "react-icons/fi";
 import { PiLineVertical } from "react-icons/pi";
 import { IoIosArrowDropright } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
-import NearYou from "./nearYou";
+import NearYou from "./NearYou";
 
 
 const Dashboard = () => {
