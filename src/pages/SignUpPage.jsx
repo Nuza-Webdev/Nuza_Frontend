@@ -27,7 +27,7 @@ const SignUpPage = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/api/auth/signup", formData);
+            await axios.post("http://localhost:3000/api/auth/signup", formData);
             setSuccess("Sign-up successful! You can now log in.");
         } catch (err) {
             setError(err.response?.data?.error || "Sign-up failed");

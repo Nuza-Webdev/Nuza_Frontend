@@ -24,22 +24,41 @@ const TopNavBar = () => {
   //     return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      const { latitude, longitude } = pos.coords;
-      console.log(latitude, longitude);
-      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.address) {
-            setLocation(data.address.county);
-            console.log("Address:", data.address);
-          } else {
-            console.error("No address data found");
-          }
+    const fetchLocation = async () => {
+      try {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          });
         });
-    });
-    setIsSignedIn(true);
+
+        const { latitude, longitude } = position.coords;
+        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+        
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch location data');
+        }
+        
+        const data = await response.json();
+        if (data && data.address) {
+          setLocation(data.address.county || 'Location not found');
+        } else {
+          setLocation('Location not found');
+        }
+      } catch (error) {
+        console.error('Error fetching location:', error);
+        setLocation('Location not available');
+      }
+    };
+
+    fetchLocation();
+    
+    // Check authentication status from localStorage or your auth system
+    const token = localStorage.getItem('token');
+    setIsSignedIn(!!token);
   }, []);
   return (
     <nav className="bg-[#7B6DFF] shadow-lg">
